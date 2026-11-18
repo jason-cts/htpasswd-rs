@@ -42,6 +42,8 @@ The default is bcrypt with cost 12, encoded with the Apache-compatible `$2y$` id
 
 The compatibility options are `-m` for Apache APR1-MD5, `-2` for SHA-256-crypt, `-5` for SHA-512-crypt, `-d` for DES-crypt, `-s` for SHA-1, and `-p` for plaintext. SHA-crypt uses 5,000 rounds by default; `-r` changes the rounds from 1,000 to 999,999,999. DES-crypt, SHA-1, and plaintext are legacy formats and should only be selected when compatibility requires them.
 
+`htpasswd-rs` supports SHA-crypt on every supported platform. Apache uses the system's `crypt()` for these formats, so its macOS build cannot generate or verify them.
+
 Plaintext verification is explicit: use `-p` with `-v` to verify a plaintext record. Other supported formats are detected from the stored hash.
 
 ## Exit status
